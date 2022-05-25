@@ -4,13 +4,32 @@
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    padding: 18px 90px;
-    margin: 20px 0;
+    display: block;
+    background-color: rgb(28, 118, 179);
+    display: inline-block;
+    width: 95%;
+    border: 3px solid #2c157e;
+    border-radius: 10px;
+    margin: 20px;
 }
 
 header h1 {
-    font-size: 20px;
+    font-size: 15px;
+    color: white;
 }
 
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+body {
+    background-color: rgba(61, 223, 223, 0.521);
+}
+
+main {
+    text-align: center;
+}
