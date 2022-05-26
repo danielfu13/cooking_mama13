@@ -3,6 +3,7 @@ var timerEl = document.querySelector("#timer");
 var mainEL = document.querySelector("#main");
 var timeRemain = 0;
 var totalPoints = 0;
+var quizQuestions = -1;
 
 var questions = [{
     question1: "What can you store in an array?",
@@ -31,12 +32,34 @@ var questions = [{
 }
 ];
 
-var startQuiz = function() {
-    timeRemain = 60;
-    document.getElementById('timer').innerHTML = timeRemain;
+function game() {
+    quizQuestions++;
 
-    timeRemain = setInterval(function() {
-        document.getElementById("timer").innerHTML = timeRemain;
+    if (quizQuestions > questions.length - 1) {
+        endQuiz();
+        return;
+    }
+
+    }
+
+
+var startQuiz = function() {
+    startBtn.addEventListener("click", event => {
+        timer();
+        mainEL.remove();
+        questions(question1);
+        startTime();
+    });
+}
+
+
+function startTime () {
+    timeRemain = 75;
+    document.getElementById('timeRemain').innerHTML = timeRemain;
+
+    timer = setInterval(function() {
+        timeRemain--;
+        document.getElementById("timeRemain").innerHTML = timeRemain;
 
         if (timeRemain <= 0) {
             clearInterval(timeRemain);
@@ -44,10 +67,10 @@ var startQuiz = function() {
         }
     }, 1000);
     
-    return;
+    game();
 }
 
+startQuiz();
 
-var home = function() {
-    
-}
+
+
