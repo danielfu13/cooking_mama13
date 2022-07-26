@@ -1,3 +1,4 @@
+
 var startBtn = document.getElementById("startBtn");
 var countdownTimer = document.getElementById("countdownTimer");
 var homeContainer =  document.getElementById("homeContainer");
@@ -6,7 +7,6 @@ var questionTitle = document.getElementById("questionTitle");
 var high_scores= [];
 var output="";
 var score = 0;
-let i = 0;
 
 // set options
 var option1 = document.getElementById("option1");
@@ -47,4 +47,46 @@ var questions = [{
     answers: 1
 }
 ];
+
+function game() {
+    quizQuestions++;
+
+    if (quizQuestions > questions.length - 1) {
+        endQuiz();
+        return;
+    }
+
+    }
+
+
+var startQuiz = function() {
+    startBtn.addEventListener("click", event => {
+        timer();
+        mainEL.remove();
+        questions(question1);
+        startTime();
+    });
+}
+
+
+function startTime () {
+    timeRemain = 75;
+    document.getElementById('timeRemain').innerHTML = timeRemain;
+
+    timer = setInterval(function() {
+        timeRemain--;
+        document.getElementById("timeRemain").innerHTML = timeRemain;
+
+        if (timeRemain <= 0) {
+            clearInterval(timeRemain);
+            endQuiz();
+        }
+    }, 1000);
+    
+    game();
+}
+
+startQuiz();
+
+
 
