@@ -92,9 +92,9 @@ option1.addEventListener('click', function(event) {
         console.log("answers" + answers);
         // answer results
         if (0 === answers) { 
-            document.getElementById("AnswerResponse").innerHTML = "Correct!";
+            document.getElementById("result").innerHTML = "Correct!";
             setTimeout(function() {
-            document.getElementById("AnswerResponse").innerHTML = "";
+            document.getElementById("result").innerHTML = "";
                 },
                 1000
             );
@@ -102,9 +102,9 @@ option1.addEventListener('click', function(event) {
             document.getElementById("score").innerHTML = score;
         } else {
             time_remaining -= 5;
-            document.getElementById("AnswerResponse").innerHTML = "Incorrect!";
+            document.getElementById("result").innerHTML = "Incorrect!";
             setTimeout(function() {
-                document.getElementById("AnswerResponse").innerHTML = "";
+                document.getElementById("result").innerHTML = "";
                     },
                     1000
                 );
@@ -122,9 +122,9 @@ option2.addEventListener('click', function(event) {
     answers = questions[i].answers;
     console.log(answers);
         if (1 === answers) { 
-            document.getElementById("AnswerResponse").innerHTML = "Correct!";
+            document.getElementById("result").innerHTML = "Correct!";
             setTimeout(function() {
-                document.getElementById("AnswerResponse").innerHTML = "";
+                document.getElementById("result").innerHTML = "";
                     },
                     1000
                 );
@@ -132,9 +132,9 @@ option2.addEventListener('click', function(event) {
             document.getElementById("score").innerHTML = score;
         } else {
             time_remaining -= 5;
-            document.getElementById("AnswerResponse").innerHTML = "Incorrect!";
+            document.getElementById("result").innerHTML = "Incorrect!";
             setTimeout(function() {
-                document.getElementById("AnswerResponse").innerHTML = "";
+                document.getElementById("result").innerHTML = "";
                     },
                     1000
                 );
@@ -152,9 +152,9 @@ option3.addEventListener('click', function(event) {
     answers = questions[i].answers;
     console.log(answers);
     if (2 === answers) { 
-        document.getElementById("AnswerResponse").innerHTML = "Correct!";
+        document.getElementById("result").innerHTML = "Correct!";
         setTimeout(function() {
-            document.getElementById("AnswerResponse").innerHTML = "";
+            document.getElementById("result").innerHTML = "";
                 },
                 1000
             );
@@ -162,9 +162,9 @@ option3.addEventListener('click', function(event) {
         document.getElementById("score").innerHTML = score;
     } else {
         time_remaining -= 5;
-        document.getElementById("AnswerResponse").innerHTML = "Incorrect!";
+        document.getElementById("result").innerHTML = "Incorrect!";
         setTimeout(function() {
-            document.getElementById("AnswerResponse").innerHTML = "";
+            document.getElementById("result").innerHTML = "";
                 },
                 1000
             );
@@ -182,9 +182,9 @@ option4.addEventListener('click', function(event) {
     answers= questions[i].answers.value;
     console.log(answers);
     if (3 === answers) { 
-        document.getElementById("AnswerResponse").innerHTML = "Correct!";
+        document.getElementById("result").innerHTML = "Correct!";
         setTimeout(function() {
-            document.getElementById("AnswerResponse").innerHTML = "";
+            document.getElementById("result").innerHTML = "";
                 },
                 1000
             );
@@ -192,9 +192,9 @@ option4.addEventListener('click', function(event) {
         document.getElementById("score").innerHTML = score;
     } else {
         time_remaining -= 5;
-        document.getElementById("AnswerResponse").innerHTML = "Incorrect!";
+        document.getElementById("result").innerHTML = "Incorrect!";
         setTimeout(function() {
-            document.getElementById("AnswerResponse").innerHTML = "";
+            document.getElementById("result").innerHTML = "";
                 },
                 1000
             );
@@ -213,7 +213,7 @@ function end_quiz() {
     document.getElementById("quizContainer").style.display="none";
     document.getElementById("countdownTimer").style.display= "none";
     document.getElementById("score_keeper").style.display= "none";
-    document.getElementById("AnswerResponse").innerHTML="";
+    document.getElementById("result").innerHTML="";
     document.getElementById("end_score").innerHTML= score;
 }
 
