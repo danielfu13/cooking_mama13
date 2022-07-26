@@ -207,7 +207,7 @@ option4.addEventListener('click', function(event) {
     };
 });
 
-/end quiz function
+//end quiz function
 function end_quiz() {
     document.getElementById("game_over").style.display= "block";
     document.getElementById("quizContainer").style.display="none";
