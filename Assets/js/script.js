@@ -207,3 +207,53 @@ option4.addEventListener('click', function(event) {
     };
 });
 
+/end quiz function
+function end_quiz() {
+    document.getElementById("game_over").style.display= "block";
+    document.getElementById("quizContainer").style.display="none";
+    document.getElementById("countdownTimer").style.display= "none";
+    document.getElementById("score_keeper").style.display= "none";
+    document.getElementById("AnswerResponse").innerHTML="";
+    document.getElementById("end_score").innerHTML= score;
+}
+
+//enter highscore
+function submit_score() {
+    high_scores.push(document.getElementById("initials").value + " " + score);
+view_high_scores();
+}
+
+//view highscore
+function view_high_scores(){  
+    document.getElementById("quizContainer").style.display="none";
+    document.getElementById("game_over").style.display= "none";
+    document.getElementById("high_scores_page").style.display="block";
+        
+    output="";
+    for(let k=0; k<high_scores.length; k++){
+        output = output + "  " + high_scores[k];
+    }
+    document.getElementById("high_scores").innerHTML= output;                
+resetQuiz();
+}
+
+// function to go back to main menu
+function go_home(){	
+    document.getElementById("high_scores_page").style.display= "none";
+    document.getElementById("homeContainer").style.display= "block";
+resetQuiz();
+}
+        
+// clear highscore
+function clearHighscore(){
+    high_scores = [];
+}
+
+// restart quiz
+function resetQuiz() {    
+    time=75;
+    time_remaining=true;
+    time_start=false;
+    i=0;
+    score=0;
+}
