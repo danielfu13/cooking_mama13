@@ -1,4 +1,3 @@
-
 var startBtn = document.getElementById("startBtn");
 var countdownTimer = document.getElementById("countdownTimer");
 var homeContainer =  document.getElementById("homeContainer");
@@ -7,6 +6,7 @@ var questionTitle = document.getElementById("questionTitle");
 var high_scores= [];
 var output="";
 var score = 0;
+let i = 0;
 
 // set options
 var option1 = document.getElementById("option1");
@@ -48,45 +48,162 @@ var questions = [{
 }
 ];
 
-function game() {
-    quizQuestions++;
+//set interval
+var countdownTimerInterval = setInterval(setCountdownTimer, 1000);
 
-    if (quizQuestions > questions.length - 1) {
-        endQuiz();
-        return;
-    }
-
-    }
-
-
-var startQuiz = function() {
-    startBtn.addEventListener("click", event => {
-        timer();
-        mainEL.remove();
-        questions(question1);
-        startTime();
-    });
-}
-
-
-function startTime () {
-    timeRemain = 75;
-    document.getElementById('timeRemain').innerHTML = timeRemain;
-
-    timer = setInterval(function() {
-        timeRemain--;
-        document.getElementById("timeRemain").innerHTML = timeRemain;
-
-        if (timeRemain <= 0) {
-            clearInterval(timeRemain);
-            endQuiz();
+// set time
+function setCountdownTimer() {
+        if (time_start)
+        time--;
+        if(time<= 0) {
+        end_quiz();
+        time = 0;    
         }
-    }, 1000);
-    
-    game();
-}
+        document.getElementById("timer").innerHTML = time;
+    }
 
-startQuiz();
+// start button to start quiz
+startBtn.addEventListener("click", function() {
+    quizContainer.style.display = "block";
+    homeContainer.style.display ="none";
+    countdownTimer.style.display= "block";
+    document.getElementById("score_keeper").style.display= "block";
+    document.getElementById("score").innerHTML = score;
+    setCountdownTimer();
+    setQuizQuestions();
+    time_start= true;
+});
+
+// display questions and options
+
+function setQuizQuestions() {
+        questionTitle.textContent = questions[i].question;
+        option1.textContent = questions[i].option[0]; 
+        option2.textContent = questions[i].option[1]; 
+        option3.textContent = questions[i].option[2]; 
+        option4.textContent = questions[i].option[3]; 
+        };
 
 
+// Change to next question
+option1.addEventListener('click', function(event) {
+        event.stopPropagation();
+        answers= questions[i].answers;
+        console.log("answers" + answers);
+        // answer results
+        if (0 === answers) { 
+            document.getElementById("AnswerResponse").innerHTML = "Correct!";
+            setTimeout(function() {
+            document.getElementById("AnswerResponse").innerHTML = "";
+                },
+                1000
+            );
+            score++;    
+            document.getElementById("score").innerHTML = score;
+        } else {
+            time_remaining -= 5;
+            document.getElementById("AnswerResponse").innerHTML = "Incorrect!";
+            setTimeout(function() {
+                document.getElementById("AnswerResponse").innerHTML = "";
+                    },
+                    1000
+                );
+        }
+        if (i >= questions.length -1) {
+        end_quiz();
+        } else {
+            i++ 
+            setQuizQuestions();
+        };
+    });
+
+option2.addEventListener('click', function(event) {
+    event.stopPropagation();
+    answers = questions[i].answers;
+    console.log(answers);
+        if (1 === answers) { 
+            document.getElementById("AnswerResponse").innerHTML = "Correct!";
+            setTimeout(function() {
+                document.getElementById("AnswerResponse").innerHTML = "";
+                    },
+                    1000
+                );
+            score++;
+            document.getElementById("score").innerHTML = score;
+        } else {
+            time_remaining -= 5;
+            document.getElementById("AnswerResponse").innerHTML = "Incorrect!";
+            setTimeout(function() {
+                document.getElementById("AnswerResponse").innerHTML = "";
+                    },
+                    1000
+                );
+        }
+        if (i >= questions.length -1) {
+        end_quiz();
+        } else {
+         i++ 
+        setQuizQuestions();
+        };
+    });
+
+option3.addEventListener('click', function(event) {
+    event.stopPropagation();
+    answers = questions[i].answers;
+    console.log(answers);
+    if (2 === answers) { 
+        document.getElementById("AnswerResponse").innerHTML = "Correct!";
+        setTimeout(function() {
+            document.getElementById("AnswerResponse").innerHTML = "";
+                },
+                1000
+            );
+        score++;
+        document.getElementById("score").innerHTML = score;
+    } else {
+        time_remaining -= 5;
+        document.getElementById("AnswerResponse").innerHTML = "Incorrect!";
+        setTimeout(function() {
+            document.getElementById("AnswerResponse").innerHTML = "";
+                },
+                1000
+            );
+    }
+    if (i >= questions.length -1) {
+    end_quiz();
+    } else {
+        i++ 
+        setQuizQuestions();
+    };
+    });
+
+option4.addEventListener('click', function(event) {
+    event.stopPropagation();
+    answers= questions[i].answers.value;
+    console.log(answers);
+    if (3 === answers) { 
+        document.getElementById("AnswerResponse").innerHTML = "Correct!";
+        setTimeout(function() {
+            document.getElementById("AnswerResponse").innerHTML = "";
+                },
+                1000
+            );
+        score++;
+        document.getElementById("score").innerHTML = score;
+    } else {
+        time_remaining -= 5;
+        document.getElementById("AnswerResponse").innerHTML = "Incorrect!";
+        setTimeout(function() {
+            document.getElementById("AnswerResponse").innerHTML = "";
+                },
+                1000
+            );
+    }
+    if (i >= questions.length -1) {
+       end_quiz();
+    } else {
+        i++ 
+        setQuizQuestions();
+    };
+});
 
