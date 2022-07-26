@@ -3,10 +3,6 @@ var countdownTimer = document.getElementById("countdownTimer");
 var homeContainer =  document.getElementById("homeContainer");
 var quizContainer = document.getElementById("quizContainer");
 var questionTitle = document.getElementById("questionTitle");   
-var high_scores= [];
-var output="";
-var score = 0;
-let i = 0;
 
 // set options
 var option1 = document.getElementById("option1");
@@ -19,6 +15,11 @@ var answers = document.getElementById("answers");
 var time = 75;
 var time_remaining = true;
 var time_start= false;
+
+var high_scores= [];
+var output="";
+var score = 0;
+let i = 0;
 
 // questions array
 var questions = [{
